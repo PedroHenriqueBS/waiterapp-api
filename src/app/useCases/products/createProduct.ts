@@ -12,7 +12,7 @@ export async function createProduct(req: Request, res: Response) {
       imagePath: imagePath || "", // Define o caminho da imagem ou uma string vazia se não houver imagem
       price: Number(price),
       category,
-      ingredients: JSON.parse(ingredients),
+      ingredients: ingredients ? JSON.parse(ingredients) : [], // Converte a string de ingredientes em um array de objetos usando JSON.parse
     });
 
     res.status(201).json(product); // Retorna o produto criado em formato JSON
