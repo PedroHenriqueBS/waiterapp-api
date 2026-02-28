@@ -6,6 +6,8 @@ import { createCategory } from "./app/useCases/categories/createCategory";
 import { listProducts } from "./app/useCases/products/listProducts";
 import { createProduct } from "./app/useCases/products/createProduct";
 import { listProductsByCategory } from "./app/useCases/categories/listProductsByCategory";
+import { listOrder } from "./app/useCases/orders/listOrders";
+import { createOrder } from "./app/useCases/orders/createOrder";
 
 export const router = Router();
 
@@ -40,14 +42,10 @@ router.post("/products", upload.single("image"), createProduct);
 router.get("/categories/:categoryId/products", listProductsByCategory);
 
 // List orders
-router.get("/orders", (request, response) => {
-  response.send("OK");
-});
+router.get("/orders", listOrder);
 
 // Create order
-router.post("/orders", (request, response) => {
-  response.send("OK");
-});
+router.post("/orders", createOrder);
 
 // Change order status (PUT = Faz alterações em todas as linhas de uma tabela. PATH = faz alterações apenas no que é necessário "alteração parcial")
 router.patch("/orders/:orderId", (request, response) => {
