@@ -8,6 +8,7 @@ import { createProduct } from "./app/useCases/products/createProduct";
 import { listProductsByCategory } from "./app/useCases/categories/listProductsByCategory";
 import { listOrder } from "./app/useCases/orders/listOrders";
 import { createOrder } from "./app/useCases/orders/createOrder";
+import { changeOrderStatus } from "./app/useCases/orders/changeOrderStatus";
 
 export const router = Router();
 
@@ -48,9 +49,7 @@ router.get("/orders", listOrder);
 router.post("/orders", createOrder);
 
 // Change order status (PUT = Faz alterações em todas as linhas de uma tabela. PATH = faz alterações apenas no que é necessário "alteração parcial")
-router.patch("/orders/:orderId", (request, response) => {
-  response.send("OK");
-});
+router.patch("/orders/:orderId", changeOrderStatus);
 
 // Delete/cancel order
 router.delete("/orders/:orderId", (request, response) => {
